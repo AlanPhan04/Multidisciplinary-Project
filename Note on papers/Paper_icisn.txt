@@ -1,0 +1,55 @@
+Mục tiêu bài báo: So sánh các giải thuật PCA và dùng PPA để tính hiệu năng cho từng giải thuật (compression ratio, error, processing time)
+
+
+* PA:
+- PCA - Piecewise Constants Approximation: Represent each segment with a horizontal line (Most simple)
+- PLA - Piecewise Linear Approximation: Uses a straight line
+- PPA - Piecewise Polynomial Approximation: A line with a higher degree for each segment
+
+Compression Algorithms:
+- Lossless: Data có thể được reconstruct lại 
+- Lossy: Chấp nhận mất data với một mức độ cho phép for better execution time and compression ratio (PA ALGORITHM)
+
+* Other PCA method: 
+
+- PAA: Divides data into equal segments of length k and approximates them with the corresponding mean value
+- APCA: allowing segments with different lengths -> improves the compression ratio (?)
+
+-> Cons: Only apply to ready data in databases
+
+* Poor Man Compression (PMC): process data one-by-one in a one-pass manner, ensure that each approximation data point does not exceed a predefined ϵ threshold
+Cons: Only compress the data when the segment cannot be approximated further -> may loss data due to the delay of storing or transferring process.
+
+* Hybrid-PCA (Combines PAA and PMC): Solve the delay problem: Split Segment when either approximation error or buffer length exceeds a particular threshold.
+
+
+
+
+
+
+
+
+
+
+PMC: 
+- produce minimal segments among PCA algorithms
+- Principle:
++ track of a pair of (max, min) values in each segment, and this can be done incrementally in O(1) time
++ When the range between max and min exceeds 2ϵ at time t, the segment of preceding points until t−1 is yielded with the corresponding mid-range value and its last endpoint.
+
+
+Hybrid-PCA:
+- Principle:
++ Hybrid-PCA will form a window from arriving data, temporally move the data to a buffer when the window is full, and max − min is then calculated. 
++ If the buffer reaches its limit, then yield the corresponding mid-range value along with the buffer size. 
++ On the other hand, if the buffer range exceeds the error threshold indicating that it cannot be approximated together with the current window, then remove this window and yield the buffer.
++  Next, we have to check whether this current window can be approximated with its mid-range value. Store this window in the buffer if the condition is not violated or else apply the PMC algorithm to approximate window with the minimum segments.
+
+
+
+# Issues while reading this paper:
+what is yield <X>, Y?
+why do we have to compress base on these things? Can everything just simply be compressed if the data is enough (like micro batch)
+In Hybrid-PCA, why should we have the code from line 18 to line 21? What does that help in improving efficiency (and in which criteria: compression ratio, execution time or what?)
+
+

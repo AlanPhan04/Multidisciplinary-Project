@@ -1,0 +1,17 @@
+concept trip: each time data is observed, an algorithm is suitable
+PAA: 
+Database: K segments
+Data Stream: PMC
+Data point A, B arrives -> Max, Min between A and B
+A new point X arrives -> Max, Min between 
+max - min > 2 \epsilon -> Split into another segment
+
+PCA: Piece-wise Constant Approximation
+
+for a specific point J in (min, max): (Max + min) / 2 < \epsilon
+
+Hybrid PCA: 1 buffer contains M windows
+
+Each time a data point arrives -> Add into the window -> calculate max, min of the window -> add window into the buffer -> calculate max, min of the buffer. 
+
+If max - min > 2 \epsilon
