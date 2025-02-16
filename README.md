@@ -1,6 +1,4 @@
-# Multidisciplinary-Project
-
-## Research Project
+# Research Project
 
 ### Description
 Research on a multithreaded compression algorithm for streaming data collected from IoT devices, along with exploring existing compression algorithms.
