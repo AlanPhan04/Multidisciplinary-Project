@@ -1,3 +1,16 @@
 Paper_icisn/
 Paper_icisn.zip
 Paper Rewritten/
+pmc/myenv/
+pmc/processed_data/
+pmc/logs/
+pmc/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.json
+*.DS_Store
+Paper_icisn/
+Paper_icisn.zip
+Paper Rewritten/
