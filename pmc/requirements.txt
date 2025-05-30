@@ -1,0 +1,2 @@
+kafka-python==2.2.10
+tqdm==4.67.1
